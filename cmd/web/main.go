@@ -5,9 +5,9 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/Goodmorningpeople/learning_web_with_go/pkg/config"
 	"github.com/Goodmorningpeople/learning_web_with_go/pkg/handlers"
-	"github.com/Goodmorningpeople/learning_web_with_go/pkg/handlers/config"
-	"github.com/Goodmorningpeople/learning_web_with_go/pkg/handlers/render"
+	"github.com/Goodmorningpeople/learning_web_with_go/pkg/render"
 )
 
 const portNumber = ":8080"

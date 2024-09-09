@@ -8,16 +8,18 @@ import (
 	"path/filepath"
 	"text/template"
 
-	"github.com/Goodmorningpeople/learning_web_with_go/pkg/handlers/config"
+	"github.com/Goodmorningpeople/learning_web_with_go/pkg/config"
+	"github.com/Goodmorningpeople/learning_web_with_go/pkg/models"
 )
+
 var app *config.AppConfig
 
 func NewTemplates(a *config.AppConfig) {
-	app = a 	
+	app = a
 }
 
-// Creates a new template using create template func and executes them using a buffer 
-func RenderTemplate(w http.ResponseWriter, tmpl string) {
+// Creates a new template using create template func and executes them using a buffer
+func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
 	tc := map[string]*template.Template{}
 	// UseCache is defined in main so explanation is located there
 	if app.UseCache {
@@ -35,7 +37,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string) {
 
 	// Executes the template by using a buffer that contains bytes as the parameter for execute
 	buf := new(bytes.Buffer)
-	err := t.Execute(buf, nil)
+	err := t.Execute(buf, td)
 	if err != nil {
 		fmt.Print("\nerror executing buffer:", err)
 	}
@@ -60,14 +62,14 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 	// ranges through all the templates collected from the pages var (page.tmpl files), parsing all the templates and adding to the cache
 	for _, page := range pages {
 
-		// .Base removes the file extensions so that the name is concise for more readable and writable code when calling this func 
+		// .Base removes the file extensions so that the name is concise for more readable and writable code when calling this func
 		name := filepath.Base(page)
 		ts, err := template.New(name).ParseFiles(page)
 		if err != nil {
 			return myCache, err
-		}	
-		
-		// need layout template so that html is properly represented in webpage, layout is accessed and stored in matches var 
+		}
+
+		// need layout template so that html is properly represented in webpage, layout is accessed and stored in matches var
 		matches, err := filepath.Glob("./templates/*.layout.tmpl")
 		if err != nil {
 			return myCache, err
@@ -75,12 +77,12 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 
 		// if there is at least one layout, will parse the layout(s) so that html using the layout(s) is properly represented
 		if len(matches) > 0 {
-			ts, err = ts.ParseGlob("./templates/*.layout.tmpl") 
+			ts, err = ts.ParseGlob("./templates/*.layout.tmpl")
 			if err != nil {
 				return myCache, err
 			}
 		}
-		myCache[name] = ts 
+		myCache[name] = ts
 	}
 	return myCache, nil
 }
