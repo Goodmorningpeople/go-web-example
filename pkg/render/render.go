@@ -18,6 +18,10 @@ func NewTemplates(a *config.AppConfig) {
 	app = a
 }
 
+// place default data from handlers in add default data func, to be called in render template func to add default data
+func AddDefaultData(td *models.TemplateData) *models.TemplateData {
+	return td
+}
 // Creates a new template using create template func and executes them using a buffer
 func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
 	tc := map[string]*template.Template{}
@@ -37,6 +41,8 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 
 	// Executes the template by using a buffer that contains bytes as the parameter for execute
 	buf := new(bytes.Buffer)
+
+	td = AddDefaultData(td)
 	err := t.Execute(buf, td)
 	if err != nil {
 		fmt.Print("\nerror executing buffer:", err)

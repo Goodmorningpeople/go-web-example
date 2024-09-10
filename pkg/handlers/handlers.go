@@ -8,8 +8,6 @@ import (
 	"github.com/Goodmorningpeople/learning_web_with_go/pkg/render"
 )
 
-// Holds data to be passed to a template, pass as parameter to a handler func
-
 // Repository pattern (very, very cool)
 var Repo *Respository
 
@@ -39,4 +37,4 @@ func (m *Respository) About(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
 		StringMap: stringMap,
 	})
-}
+}	
