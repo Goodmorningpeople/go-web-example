@@ -30,10 +30,17 @@ func main() {
 	render.NewTemplates(&app)
 	app.TemplateCache = tc
 
-	// Call handler functions to start 
-	http.HandleFunc("/", handlers.Repo.Home)
-	http.HandleFunc("/about", handlers.Repo.About)
-
 	fmt.Printf("Starting application on port %s", portNumber)
-	_ = http.ListenAndServe(portNumber, nil)
+
+	// Use http server with routes from routes.go 
+	svr := http.Server {
+		Addr: portNumber,
+		Handler: routes(&app),
+	}
+
+	// Serve http server 
+	err = svr.ListenAndServe()
+	if err != nil {
+		log.Fatal("\n fatal error serving http server")
+	}
 }
