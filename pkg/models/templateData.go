@@ -1,6 +1,6 @@
 package models
 
-// Data to be passed into template through render.go, pass as parameter into handler func 
+// data to be passed into template through render.go, pass as parameter into handler func 
 type TemplateData struct {
 	StringMap map[string]string
 	IntMap map[int]int

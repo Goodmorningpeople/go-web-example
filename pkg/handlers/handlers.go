@@ -8,7 +8,7 @@ import (
 	"github.com/Goodmorningpeople/learning_web_with_go/pkg/render"
 )
 
-// Repository pattern (very, very cool)
+// repository pattern (very, very cool)
 var Repo *Respository
 
 type Respository struct {
@@ -25,7 +25,7 @@ func NewHandler(r *Respository) {
 	Repo = r
 }
 
-// Handler funcs that handle the rendered templates and write them to a server with oppotional logic passed to template (response writer w is passed when used in HandleFunc() for this)
+// handler funcs that handle the rendered templates and write them to a server with oppotional logic passed to template (response writer w is passed when used in HandleFunc() for this)
 func (m *Respository) Home(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{})
 }
