@@ -4,7 +4,14 @@
         <div class="row">
             <div class="col">
                 <h1>This is the about page</h1>
-                <p>This was taken from handlers.go: {{index .StringMap "test"}}</p>
+                <p>Here is a quick explanation on why Go is such a good language: {{index .StringMap "explanation"}}</p>
+                <p>
+                    {{if ne (index .StringMap "remote_ip") ""}}
+                        Ah! I see you've visited the home page. Since you've visited the home page, your remote address has been stored, and this page can now access it. This shows how dynamic web development with Go is, and why you should use it. Here is your remote ip address: {{index .StringMap "remote_ip"}} 
+                    {{else}}
+                        Just to show you how incredibly robust Go is for web development, without a few lines of code the program knows that since you haven't visited the <a href="/">Home</a> page yet, I don't know your remote ip address
+                    {{end}}
+                </p>
             </div>
         </div>
     </div>
