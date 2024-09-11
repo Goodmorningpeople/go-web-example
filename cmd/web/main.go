@@ -15,7 +15,7 @@ const portNumber = ":8080"
 func main() {
 	app := config.AppConfig{}
 
-	// UseCache set to true causes render function to create template cache every time render function is run but is slower, set to false for real users
+	// UseCache set to false causes render function to create template cache every time render function is run but is slower, set to true for real users
 	app.UseCache = false
 	tc, err := render.CreateTemplateCache()
 	if err != nil {
@@ -38,9 +38,10 @@ func main() {
 		Handler: routes(&app),
 	}
 
-	// Serve http server 
+	// Serve http server 221	
 	err = svr.ListenAndServe()
 	if err != nil {
 		log.Fatal("\n fatal error serving http server")
 	}
 }
+// 
