@@ -59,7 +59,7 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 	myCache := map[string]*template.Template{}
 
 	// Gets the files from the templates directory that have the extension page.tmpl (the main page files)
-	pages, err := filepath.Glob("./templates/*.page.tmpl")
+	pages, err := filepath.Glob("./templates/*.page.html")
 	if err != nil {
 		fmt.Print("\nerror accessing files:", err)
 		return myCache, err
