@@ -3,9 +3,9 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/Goodmorningpeople/learning_web_with_go/pkg/config"
-	"github.com/Goodmorningpeople/learning_web_with_go/pkg/models"
-	"github.com/Goodmorningpeople/learning_web_with_go/pkg/render"
+	"github.com/Goodmorningpeople/go_web_example/pkg/config"
+	"github.com/Goodmorningpeople/go_web_example/pkg/models"
+	"github.com/Goodmorningpeople/go_web_example/pkg/render"
 )
 
 // repository pattern (very, very cool)

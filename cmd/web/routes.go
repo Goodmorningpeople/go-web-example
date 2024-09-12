@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"github.com/Goodmorningpeople/learning_web_with_go/pkg/config"
-	"github.com/Goodmorningpeople/learning_web_with_go/pkg/handlers"
+	"github.com/Goodmorningpeople/go_web_example/pkg/config"
+	"github.com/Goodmorningpeople/go_web_example/pkg/handlers"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
