@@ -1,4 +1,4 @@
-module github.com/Goodmorningpeople/learning_web_with_go
+module github.com/Goodmorningpeople/go_web_example
 
 go 1.23.0
 
