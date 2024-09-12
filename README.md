@@ -1,3 +1,4 @@
+# Go Example Project
 This project is an example Go web application for anyone wanting to build a Go web application fast.
 This project is technically production ready and is mostly optimized, though I would recommend you just use this project as the basic framework for a more advanced Go web application. 
 
